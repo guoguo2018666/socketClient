@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\workbox\projects\hellosocket\easytcpclient\eaaytcpclient.hpp(112): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\EasyTcpClient.exe
+  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\EasyTcpClient.pdb (Partial PDB)

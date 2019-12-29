@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\workbox\projects\hellosocket\easytcpclient\main.cpp(15): warning C4005: “FD_SETSIZE”: 宏重定义
+  c:\program files (x86)\windows kits\8.1\include\um\winsock2.h(133): note: 参见“FD_SETSIZE”的前一个定义
+  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\Debug\EasyTcpClient.exe
+  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\Debug\EasyTcpClient.pdb (Partial PDB)
