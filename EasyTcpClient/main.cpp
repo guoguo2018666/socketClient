@@ -121,16 +121,17 @@ void sendThread(int id) {
 	std::thread threadRecv(revcThread, clientsVector,0,40);
 	threadRecv.detach();
 	
-	Login login;
-	strcpy_s(login.userName, "li");
-	strcpy_s(login.passWord, "liPassword");
+	//Login login;
+	//strcpy_s(login.userName, "li");
+	//strcpy_s(login.passWord, "liPassword");
+	HeartC2S heartc2s;
 	while (!g_bExit) {
 		
 		for (int i = 0; i < 40; i++) {
 		
 			for (int j = 0; j < 10; j++) {
 				sendCount++;
-				clientsVector[i]->SendData(&login);
+				clientsVector[i]->SendData(&heartc2s);
 			}
 
 			//if (!clientsVector[i]->OnRun()) {

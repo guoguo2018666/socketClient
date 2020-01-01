@@ -206,7 +206,7 @@ public:
 			LoginResult *login = (LoginResult *)header;
 			
 			//忽略判断用户名和密码是否正确
-			std::cout << "收到服务器消息CMD_LOGIN_RESULT，数据长度：" << login->dataLength << " ,结果：" << login->result << std::endl;
+			//std::cout << "收到服务器消息CMD_LOGIN_RESULT，数据长度：" << login->dataLength << " ,结果：" << login->result << std::endl;
 			break;
 		}
 		case CMD_LOGINOUT_RESULT:
@@ -223,6 +223,24 @@ public:
 			//recv(cSock, (char*)&login + sizeof(DataHeader), sizeof(login) - sizeof(DataHeader), 0);
 			//忽略判断用户名和密码是否正确
 			std::cout << "收到服务器消息CMD_NEW_USER_JOIN，数据长度：" << login->dataLength << " ,结果：" << login->sockID << std::endl;
+			break;
+		}
+		case CMD_HEART_S2C:
+		{
+			HeartS2C *heartS2C = (HeartS2C *)(header);
+			
+
+			std::cout << "收到服務器[]的心跳" << std::endl;
+
+			//向客戶端回送消息
+
+			//std::shared_ptr<HeartS2C>ret(new HeartS2C());
+			//pClient->SendData((DataHeader*)(ret.get()));
+
+			//begin服務器發送與接收分離代碼，現在先注釋掉
+			//addSendTask(pClient, (DataHeader*)ret);
+			//end服務器發送與接收分離代碼，現在先注釋掉
+
 			break;
 		}
 		default:
