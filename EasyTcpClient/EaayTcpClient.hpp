@@ -206,7 +206,7 @@ public:
 			LoginResult *login = (LoginResult *)header;
 			
 			//忽略判断用户名和密码是否正确
-			//std::cout << "收到服务器消息CMD_LOGIN_RESULT，数据长度：" << login->dataLength << " ,结果：" << login->result << std::endl;
+			std::cout << "收到服务器消息CMD_LOGIN_RESULT，数据长度：" << login->dataLength << " ,结果：" << login->result << std::endl;
 			break;
 		}
 		case CMD_LOGINOUT_RESULT:

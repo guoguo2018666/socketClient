@@ -23,6 +23,8 @@
 #include "messageHeader.hpp"
 #include "EaayTcpClient.hpp"
 
+
+
 bool g_bExit = false;
 void cmdThread(EazyTcpClient *client) {
 	while (true) {
@@ -78,6 +80,22 @@ void timePrintf() {
 	}
 }
 
+void revcThread(std::vector<EazyTcpClient*> &clientsVector,int nBegin, int nEnd) {
+
+	while (!g_bExit) {
+
+		for (int i = nBegin; i < nEnd; i++) {
+
+			if (!clientsVector[i]->OnRun()) {
+				//break;
+			}
+
+		}
+
+	}
+
+}
+
 void sendThread(int id) {
 	std::vector<EazyTcpClient*> clientsVector;
 	for (int i = 0; i < 40; i++) {
@@ -98,6 +116,10 @@ void sendThread(int id) {
 		}
 
 	}
+
+	//†™„Ó½ÓÊÕ¾Q³Ì
+	std::thread threadRecv(revcThread, clientsVector,0,40);
+	threadRecv.detach();
 	
 	Login login;
 	strcpy_s(login.userName, "li");
@@ -111,9 +133,9 @@ void sendThread(int id) {
 				clientsVector[i]->SendData(&login);
 			}
 
-			if (!clientsVector[i]->OnRun()) {
+			//if (!clientsVector[i]->OnRun()) {
 				//break;
-			}
+			//}
 			
 		}
 	
