@@ -24,8 +24,8 @@ enum CMD {
 //消息头
 struct DataHeader
 {
-	int  dataLength;//数据长度
-	short  cmd;
+	int32_t  dataLength;//数据长度
+	uint16_t  cmd;
 };
 
 //命令

@@ -23,7 +23,7 @@
 #include "CELLBuffer.hpp"
 #include "CELLNetWork.hpp"
 
-
+#include"CELLMsgStream.hpp"
 
 bool g_bExit = false;
 void cmdThread(EazyTcpClient *client) {
@@ -133,6 +133,21 @@ void sendThread(int id) {
 			for (int j = 0; j < 10; j++) {
 				sendCount++;
 				clientsVector[i]->SendData(&heartc2s);
+
+				/*CELLSendMsgStream cellSendMsgStream;
+				cellSendMsgStream.writeInt16(CMD_LOGIN);
+
+				char *name = new char[32];
+				name = "libin";
+				cellSendMsgStream.writeArray(name, strlen(name));
+
+				char* password = new char[32];
+				password = "abcdef";
+				cellSendMsgStream.writeArray(password, strlen(password));
+
+				cellSendMsgStream.finsh();
+
+				clientsVector[i]->SendData((DataHeader*)cellSendMsgStream.getData());*/
 			}
 
 			//if (!clientsVector[i]->OnRun()) {
@@ -155,13 +170,9 @@ int main() {
 	LoginResult ret = {};
 	std::cout << "xxxxxxxxxxxxx长度【" << sizeof(LoginResult) << "]" << std::endl;
 
-	std::cout << "int32_t--" << sizeof(int32_t) << "----" << sizeof(uint32_t) << std::endl;
-	CELLStream cellstream;
+	//std::cout << "int32_t--" << sizeof(int32_t) << "----" << sizeof(uint32_t) << std::endl;
+	/*CELLStream cellstream;
 	cellstream.writeInt32(5);
-
-	//int32_t n5 = 0;	
-	//cellstream.readInt32(n5);
-	//std::cout << "read5--" << n5 << std::endl;
 
 	char* str = "heihei";
 	cellstream.writeArray(str, strlen(str));
@@ -171,30 +182,30 @@ int main() {
 
 
 	int b[] = { 1,2,3,4,5 };
-	cellstream.writeArray(b, 5);
+	cellstream.writeArray(b, 5);*/
 
-	//---------读
-	int32_t n5 = 0; 
-	n5 = cellstream.readInt32(n5);
-	std::cout << "n5[" << n5 <<"]"<< std::endl;
+	////---------读
+	//int32_t n5 = 0; 
+	//n5 = cellstream.readInt32(n5);
+	//std::cout << "n5[" << n5 <<"]"<< std::endl;
 
-	char* strRead = new char[6];
-	auto nRet1 = cellstream.readArray(strRead, 6);
-	std::cout << "strRead[" << strRead << "]" << std::endl;
-	delete[]strRead;
+	//char* strRead = new char[6];
+	//auto nRet1 = cellstream.readArray(strRead, 6);
+	//std::cout << "strRead[" << strRead << "]" << std::endl;
+	//delete[]strRead;
 
 
-	char aRet[9];
-	auto nRet2 = cellstream.readArray(aRet, 9);
-	std::cout << "aRet[" << aRet << "]" << std::endl;
+	//char aRet[9];
+	//auto nRet2 = cellstream.readArray(aRet, 9);
+	//std::cout << "aRet[" << aRet << "]" << std::endl;
 
-	int bRet[5];
-	auto nRet3 = cellstream.readArray(bRet, 5);
-	for (int n = 0; n < 5; n++) {
-		std::cout << "bRet[" << bRet[n] << "]" << std::endl;
-	}
+	//int bRet[5];
+	//auto nRet3 = cellstream.readArray(bRet, 5);
+	//for (int n = 0; n < 5; n++) {
+	//	std::cout << "bRet[" << bRet[n] << "]" << std::endl;
+	//}
 	
-
+    //----------------------------------
 
 	/*CELLStream cellstream;
 	char a[] = "abcdefadd";
@@ -217,26 +228,46 @@ int main() {
 	n5 = cellstream.readInt32(n5);
 	std::cout << "n5[" << n5 << "]" << std::endl;*/
 
-	//EazyTcpClient client;
-	//client.InitSocket();
+	/*CELLSendMsgStream cellSendMsgStream;
+	cellSendMsgStream.writeInt16(CMD_LOGIN);
 
-	//client.ConnectServer("127.0.0.1", 14567);
+	char *name =  new char[32];
+	name = "libin";
+	cellSendMsgStream.writeArray(name,strlen(name));
 
-	//int nThreadNum = 1;
-	//for (int i = 0; i < nThreadNum; i++) {
-	//	std::thread tSend(sendThread, i+1);
-	//	tSend.detach();
-	//}
+	char* password = new char[32];
+	password = "abcdef";
+	cellSendMsgStream.writeArray(password, strlen(password));
+
+	cellSendMsgStream.finsh();
+*/
+	/*EazyTcpClient client;
+	client.InitSocket();
+
+	client.ConnectServer("127.0.0.1", 14567);*/
+
+	//client.SendData((Data)cellSendMsgStream.getData());
+
+	EazyTcpClient client;
+	client.InitSocket();
+
+	client.ConnectServer("127.0.0.1", 14567);
+
+	int nThreadNum = 1;
+	for (int i = 0; i < nThreadNum; i++) {
+		std::thread tSend(sendThread, i+1);
+		tSend.detach();
+	}
 
 
-	////启动屏幕输入线程
-	//std::thread t1(cmdThread, &client);
-	//t1.detach();
-	//while (!g_bExit)
-	//{
-	//	timePrintf();
-	//}
-	//
+	//启动屏幕输入线程
+	std::thread t1(cmdThread, &client);
+	t1.detach();
+	while (!g_bExit)
+	{
+		timePrintf();
+	}
+	
 	return 0;
 
 }

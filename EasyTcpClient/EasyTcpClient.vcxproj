@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CELLBuffer.hpp" />
+    <ClInclude Include="CELLMsgStream.hpp" />
     <ClInclude Include="CELLNetWork.hpp" />
     <ClInclude Include="CELLStream.hpp" />
     <ClInclude Include="CELLTimestemp.hpp" />

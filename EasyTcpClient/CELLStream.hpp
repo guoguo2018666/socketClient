@@ -23,6 +23,36 @@ public:
 			delete[] _pMsgBuf;
 		}
 	}
+
+	char* getData() {
+		return _pMsgBuf;
+	}
+
+	int getDataLength() {
+		return  _nWritePos;
+	}
+
+	void setWritePos(int n) {
+		_nWritePos = n;
+	}
+
+	int getWritePos() {
+		return _nWritePos;
+	}
+
+	void push(int n) {
+		_nWritePos += n;
+	}
+
+	void pop(int n) {
+		_nReadPos += n;
+	}
+
+
+	//是否有n的空间可读
+	bool canRead(int n) {
+		return _nSumSize - _nReadPos >= n;
+	}
 	
 	//read
 	template<typename T>
@@ -151,7 +181,7 @@ public:
 	bool writeDouble(double n) {
 		return write(n);
 	}
-
+//protected:
 private:
 	//缓冲区
 	char * _pMsgBuf = nullptr;
