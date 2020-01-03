@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClInclude Include="CELLBuffer.hpp" />
     <ClInclude Include="CELLNetWork.hpp" />
+    <ClInclude Include="CELLStream.hpp" />
     <ClInclude Include="CELLTimestemp.hpp" />
     <ClInclude Include="ClientSocket.hpp" />
     <ClInclude Include="EaayTcpClient.hpp" />

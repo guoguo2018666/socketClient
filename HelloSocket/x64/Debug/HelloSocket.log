@@ -1,4 +1,4 @@
 ﻿  main.cpp
-c:\workbox\projects\hellosocket\hellosocket\main.cpp(207): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  HelloSocket.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\HelloSocket.exe
-  HelloSocket.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\HelloSocket.pdb (Partial PDB)
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\hellosocket\main.cpp(207): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  HelloSocket.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\beifen1\client\socketClient\x64\Debug\HelloSocket.exe
+  HelloSocket.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\beifen1\client\socketClient\x64\Debug\HelloSocket.pdb (Partial PDB)

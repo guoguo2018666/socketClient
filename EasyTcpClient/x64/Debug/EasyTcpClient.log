@@ -1,4 +1,26 @@
 ﻿  main.cpp
-c:\workbox\projects\hellosocket\easytcpclient\eaaytcpclient.hpp(113): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\EasyTcpClient.exe
-  EasyTcpClient.vcxproj -> C:\workBox\Projects\HelloSocket\x64\Debug\EasyTcpClient.pdb (Partial PDB)
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\eaaytcpclient.hpp(28): warning C4005: “RECV_BUFF_SIZE”: 宏重定义
+  c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\clientsocket.hpp(32): note: 参见“RECV_BUFF_SIZE”的前一个定义
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\eaaytcpclient.hpp(122): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\main.cpp(167): warning C4267: “参数”: 从“size_t”转换到“uint32_t”，可能丢失数据
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\main.cpp(170): warning C4267: “参数”: 从“size_t”转换到“uint32_t”，可能丢失数据
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\cellstream.hpp(42): warning C4267: “+=”: 从“size_t”转换到“int”，可能丢失数据
+  c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\cellstream.hpp(76): note: 参见对正在编译的函数 模板 实例化“bool CELLStream::read<int8_t>(T &,bool)”的引用
+          with
+          [
+              T=int8_t
+          ]
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\cellstream.hpp(113): warning C4267: “+=”: 从“size_t”转换到“int”，可能丢失数据
+  c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\cellstream.hpp(139): note: 参见对正在编译的函数 模板 实例化“bool CELLStream::write<int8_t>(T)”的引用
+          with
+          [
+              T=int8_t
+          ]
+c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\cellstream.hpp(63): warning C4267: “+=”: 从“size_t”转换到“int”，可能丢失数据
+  c:\users\home\documents\visual studio 2015\projects\beifen1\client\socketclient\easytcpclient\main.cpp(182): note: 参见对正在编译的函数 模板 实例化“uint32_t CELLStream::readArray<char>(T *,uint32_t)”的引用
+          with
+          [
+              T=char
+          ]
+  EasyTcpClient.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\beifen1\client\socketClient\x64\Debug\EasyTcpClient.exe
+  EasyTcpClient.vcxproj -> C:\Users\home\Documents\Visual Studio 2015\Projects\beifen1\client\socketClient\x64\Debug\EasyTcpClient.pdb (Partial PDB)
