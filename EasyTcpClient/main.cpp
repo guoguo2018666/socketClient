@@ -13,15 +13,15 @@
 #define SOCKET_ERROR -1
 #endif // _WIN32
 
-
-
-
 #include <thread>
 #include <iostream>
 #include <vector>
 
 #include "messageHeader.hpp"
 #include "EaayTcpClient.hpp"
+
+#include "CELLBuffer.hpp"
+#include "CELLNetWork.hpp"
 
 
 

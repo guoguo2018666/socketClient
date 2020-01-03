@@ -22,6 +22,8 @@
 #include "messageHeader.hpp"
 #include "CELLTimestemp.hpp"
 #include <atomic>
+
+#include"ClientSocket.hpp"
  
 #define RECV_BUFF_SIZE 10240
 
@@ -29,7 +31,7 @@ class EazyTcpClient
 {
 public:
 	EazyTcpClient() {
-
+		
 	}
 	virtual ~EazyTcpClient() {
 		CloseSocket();
@@ -41,6 +43,11 @@ public:
 		WSADATA dat;
 		WSAStartup(ver, &dat);
 #endif
+
+		if (_pClient) {
+			delete _pClient;
+			_pClient = nullptr;
+		}
 		
 		_sock = socket(AF_INET, SOCK_STREAM, 0);
 		if (INVALID_SOCKET == _sock) {
@@ -48,6 +55,8 @@ public:
 		}
 		else {
 			std::cout << "创建套接字成功" << std::endl;
+
+			_pClient = new ClientSocket(_sock);
 		}
 
 		return 0;
@@ -95,6 +104,7 @@ public:
 	//发送数据
 	int SendData(DataHeader *header) {
 		//if (isRun()&& (header != nullptr)) {
+		//std::cout << " 确实发送了" << std::endl;
 			return send(_sock, (const char*)header, header->dataLength, 0);
 		//}
 		return 0;
@@ -140,6 +150,11 @@ public:
 			return true;
 		}
 		return false;
+	}
+
+
+	int RecvDataNew() {
+
 	}
 
 	//接收缓冲区
@@ -257,6 +272,8 @@ public:
 
 private:
 	SOCKET _sock;
+
+	ClientSocket* _pClient = nullptr;
 
  
 
